@@ -1,0 +1,54 @@
+﻿@model IEnumerable<BusinessObjects.DTOs.RentingDto>
+
+@{
+    ViewData["Title"] = "Renting";
+}
+
+<h1>Renting</h1>
+
+<div>Search by CompanyName</div>
+<form asp-action="Renting" method="get">
+    <input class="form-control" type="text" value="@ViewBag.SearchValue" name="search" />
+    <button type="submit">Search</button>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PropertyProfileID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+            <th>Company</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompanyID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PropertyProfileID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                    @item.Company.CompanyName
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
